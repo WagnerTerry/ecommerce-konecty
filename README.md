@@ -11,9 +11,7 @@ Para esse projeto foi utilizado as seguintes stacks:
 
 No front-end fiz uma landing page onde exibe os produtos, e a parte de back-end, aproveitei de um outro projeto que já tinha feito, no caso em NodeJs, e para banco de dados o Mongo Atlas, ambos front e back, estão publicados e pode ser acessado nessa página
 
-```
-https://ecommerce-konecty.vercel.app/
-```
+[Ecommerce-Konecty](https://ecommerce-konecty.vercel.app/)
 
 ## Descrição do Desafio Konecty:
 
