@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: "https://backendts-wagnerterry.vercel.app/products",
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+const baseURL = "https://backendts-wagnerterry.vercel.app/products";
 
-export default api;
+export default class api {
+  static getProduct = async () => {
+    const { data } = await axios.get(baseURL);
+    return data;
+  };
+}
