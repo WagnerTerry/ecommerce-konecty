@@ -20,14 +20,15 @@ export default function Home() {
   const [products, setProducts] = useState<IProduct[]>([])
   const [loading, setLoading] = useState(false)
   const [filterCategory, setFilterCategory] = useState<string | null>(null)
-
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState<IProduct[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
     const showProducts = async () => {
       try {
         setLoading(true)
         const products = await api.getProduct();
-        console.log('prd', products);
         setProducts(products);
         setLoading(false)
 
@@ -40,22 +41,52 @@ export default function Home() {
     showProducts()
   }, [])
 
-  const filterProductsByCategory = (category: string | null) => {
-    setLoading(true);
-    if (category === null) {
-      setFilterCategory(null);
+  const filterProducts = () => {
+    if (searchTerm.trim() === '') {
+      setSearchResults([]);
+      setSearchQuery('');
     } else {
-      setFilterCategory(category);
+      const filtered = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setSearchResults(filtered);
+      setSearchQuery(searchTerm);
     }
-    setLoading(false);
   };
 
-  const filteredProducts = filterCategory === null ? products : products.filter(product => product.category === filterCategory);
+  const filterProductsByCategory = (category: string | null) => {
+    setFilterCategory(category);
+  };
+
+  const filteredProducts = searchQuery
+    ? searchResults
+    : products.filter(product => filterCategory === null || product.category === filterCategory);
 
   return (
     <div className="p-8 bg-gray-100 min-h-screen">
       <div className="mb-4 flex gap-4">
+        <input
+          type="text"
+          placeholder="Buscar produtos"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="px-4 py-2 border border-gray-300 rounded-3xl focus:outline-none focus:border-blue-500 "
+        />
+        <button
+          onClick={filterProducts}
+          className="px-4 py-2 bg-blue-500 text-white rounded-3xl hover:bg-blue-600 focus:outline-none"
+        >
+          Pesquisar
+        </button>
+      </div>
 
+      {searchQuery && (
+        <div className="mb-4">
+          <p className="text-lg font-semibold">{searchQuery}</p>
+          <p className="text-sm text-gray-500">{searchResults.length} produtos encontrados</p>
+        </div>
+      )}
+      <div className="mb-4 flex gap-4 mt-10">
         <button
           className={`btn ${filterCategory === null ? 'btn-active' : ''}`}
           onClick={() => filterProductsByCategory(null)}
