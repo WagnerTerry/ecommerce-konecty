@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <div className="p-8 bg-gray-100 min-h-screen">
-      <div className="mb-4 flex gap-4">
+      <div className="mb-4 flex gap-4 flex-col sm:flex-row">
         <input
           type="text"
           placeholder="Buscar produtos"
@@ -83,10 +83,10 @@ export default function Home() {
       {searchQuery && (
         <div className="mb-4">
           <p className="text-lg font-semibold">{searchQuery}</p>
-          <p className="text-sm text-gray-500">{searchResults.length} produtos encontrados</p>
+          <p className="text-sm text-gray-500">{searchResults.length} produto(s) encontrado(s)</p>
         </div>
       )}
-      <div className="mb-4 flex gap-4 mt-10">
+      <div className="mb-4 flex gap-4 mt-10 flex-col sm:flex-row">
         <button
           className={`btn ${filterCategory === null ? 'btn-active' : ''}`}
           onClick={() => filterProductsByCategory(null)}
@@ -117,7 +117,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
           {filteredProducts.map((product) => (
             <div key={product._id} className="bg-white p-4 rounded-lg shadow-md flex flex-col justify-between">
-              <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
+              <img src={product.image} alt={product.name} className="w-full h-48 mb-4 rounded-lg" />
               <h2 className="text-lg font-semibold mb-2">{product.name}</h2>
               <p className="text-gray-600 mb-4 overflow-hidden line-clamp-3">{product.description}</p>
               <p className="text-lg font-bold text-blue-600">R$ {product.price.replace('.', ',')}</p>
