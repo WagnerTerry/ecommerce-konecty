@@ -1,4 +1,21 @@
-**Descrição do Desafio Konecty:**
+# Ecommerce Konecty
+
+Para esse projeto foi utilizado as seguintes stacks:
+
+- NextJs
+- Tailwind
+- Axios
+- Typescript
+- NodeJs
+- Mongo
+
+No front-end fiz uma landing page onde exibe os produtos, e a parte de back-end, aproveitei de um outro projeto que já tinha feito, no caso em NodeJs, e para banco de dados o Mongo Atlas, ambos front e back, estão publicados e pode ser acessado nessa página
+
+```
+https://ecommerce-konecty.vercel.app/
+```
+
+## Descrição do Desafio Konecty:
 
 O projeto consiste em uma aplicação web que exibe uma lista de produtos em uma única página, com algumas funcionalidades básicas de front e back-end, buscando demonstrar entendimento de conceitos básicos e organização de código. Uma sugestão de layout pode ser obtida neste [link](https://www.figma.com/file/xdRzcu1tXDNdXkDRzvJnCR/Product-Listing?type=design&node-id=0%3A1&mode=design&t=xpH091Fq3aaMScXN-1).
 
