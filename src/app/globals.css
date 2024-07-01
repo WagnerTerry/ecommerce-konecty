@@ -11,7 +11,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #c1c1c1
+  background: #f3f4f6
 }
 
 @layer utilities {
@@ -37,7 +37,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #9a9393;
+  background-color: #fff;
 }
 
 .btn-active {
