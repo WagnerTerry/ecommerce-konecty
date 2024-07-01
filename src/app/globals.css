@@ -37,10 +37,10 @@ body {
 }
 
 .btn:hover {
-  background-color: #9a9393;
+  background-color: #555;
 }
 
 .btn-active {
-  background-color: #555;
+  background-color: #9a9393;
   color: #fff;
 }
